@@ -38,10 +38,12 @@ const Home = () => {
                 url = url.concat(`&page=${pageNumber}`)
 
             router.push(url)
+            console.log('URL' , url)
 
         } else {
 
             router.push(`/?page=${pageNumber}`)
+            console.log('URL ELSE' , `/?page=${pageNumber}`)
             // window.location.href = `/?page=${pageNumber}`
         }
 

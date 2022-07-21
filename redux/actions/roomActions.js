@@ -37,7 +37,11 @@ import {
 } from '../constants/roomConstants'
 
 // Get all rooms
-export const getRooms = (req, currentPage = 1, location = '', guests, category) => async (dispatch) => {
+// currentPage or well be queryPage params
+export const getRooms = (req, currentPage = 1  
+
+    
+    , location = '', guests, category) => async (dispatch) => {
     try {
 
         const { origin } = absoluteUrl(req);
