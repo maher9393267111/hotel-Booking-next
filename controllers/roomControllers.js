@@ -58,7 +58,8 @@ const allRooms = async (req, res) => {
 
     res.status(200).json({
         success: true,
-        rooms
+        rooms,
+        count: rooms.length
     })
 
 
