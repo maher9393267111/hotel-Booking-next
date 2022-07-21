@@ -5,7 +5,11 @@ const dbConnect = () => {
         return
     }
 
-    mongoose.connect(process.env.DB_URI, {
+    mongoose.connect(
+        'mongodb+srv://maher:maher9326@cluster0.nf63j.mongodb.net/Hotel?retryWrites=true&w=majority'
+       // process.env.DB_URI
+        ,
+         {
        useNewUrlParser: true,
        // useUnifiedTopology: true,
       //  useFindAndModify: false,

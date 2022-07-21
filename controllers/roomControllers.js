@@ -168,7 +168,7 @@ const deleteRoom = catchAsyncErrors(async (req, res) => {
 // Create all rooms   =>   /api/rooms
 const allRooms3 = catchAsyncErrors(async (req, res) => {
 
-    const resPerPage = 4;
+    const resPerPage = 3;
 
     const roomsCount = await Room.countDocuments();
 
