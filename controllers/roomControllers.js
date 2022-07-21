@@ -51,11 +51,25 @@ const  newRoom  =  async (req, res) => {
 
 
 
+const allRooms = async (req, res) => {
+
+    const rooms = await Room.find();
+    console.log('------------->>>>>',rooms);
+
+    res.status(200).json({
+        success: true,
+        rooms
+    })
+
+
+}
+
+
 
 
 
 export {
-//    allRooms,
+    allRooms,
     newRoom,
     // getSingleRoom,
     // updateRoom,
