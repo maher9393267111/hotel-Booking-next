@@ -1,7 +1,7 @@
 import nc from 'next-connect'
  import dbConnect from '../../../config/dbConnect'
 
-import {  getSingleRoom } from '../../../controllers/roomControllers'
+import {  getSingleRoom,updateRoom  } from '../../../controllers/roomControllers'
 
 //import onError from '../../../middlewares/errors'
 //import { isAuthenticatedUser, authorizeRoles } from '../../../middlewares/auth'
@@ -13,6 +13,7 @@ const handler = nc()
 dbConnect();
 
 handler.get(getSingleRoom)
+handler.put(updateRoom)
 
 // handler
 //     .use(isAuthenticatedUser, authorizeRoles('admin'))
