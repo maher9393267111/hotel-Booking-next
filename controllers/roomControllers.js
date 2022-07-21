@@ -177,7 +177,7 @@ const allRooms3 = catchAsyncErrors(async (req, res) => {
 
     const apiFeatures = new APIFeatures(Room.find(), req.query)
         .search()
-      //  .filter()
+        .filter()
 
     let rooms = await apiFeatures.query;
     let filteredRoomsCount = rooms.length;
