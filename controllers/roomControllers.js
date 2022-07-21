@@ -1,5 +1,5 @@
 import Room from '../models/room';
-
+import catchAsyncErrors from '../middlewares/catchAsyncErrors'
 
 
 // Create new room   =>   /api/rooms
@@ -67,12 +67,27 @@ const allRooms = async (req, res) => {
 
 
 
+// Get room details   =>   /api/rooms/:id
+const getSingleRoom = catchAsyncErrors(async (req, res, next) => {
+
+    const room = await Room.findById(req.query.id);
+
+    if (!room) {
+        return next(new ErrorHandler('Room not found with this ID', 404))
+    }
+
+    res.status(200).json({
+        success: true,
+        room
+    })
+})
+
 
 
 export {
     allRooms,
     newRoom,
-    // getSingleRoom,
+     getSingleRoom,
     // updateRoom,
     // deleteRoom,
     // createRoomReview,
