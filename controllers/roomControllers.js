@@ -1,6 +1,6 @@
 import Room from '../models/room';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors'
-
+import APIFeatures from '../utils/apiFeatures'
 
 // Create new room   =>   /api/rooms
 const newRoom1 = //catchAsyncErrors
@@ -162,6 +162,49 @@ const deleteRoom = catchAsyncErrors(async (req, res) => {
 
 
 
+// AllRooms with search query   =>   /api/rooms/search
+
+
+// Create all rooms   =>   /api/rooms
+const allRooms3 = catchAsyncErrors(async (req, res) => {
+
+    const resPerPage = 4;
+
+    const roomsCount = await Room.countDocuments();
+
+// seach query searched for  location only --> 
+//http://localhost:3000/api/rooms?location=Stafford
+
+    const apiFeatures = new APIFeatures(Room.find(), req.query)
+        .search()
+      //  .filter()
+
+    let rooms = await apiFeatures.query;
+    let filteredRoomsCount = rooms.length;
+
+    apiFeatures.pagination(resPerPage)
+    rooms = await apiFeatures.query.clone();
+
+    res.status(200).json({
+        success: true,
+        roomsCount,
+        resPerPage,
+        filteredRoomsCount,
+        rooms
+    })
+
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,6 +216,7 @@ export {
      getSingleRoom,
      updateRoom,
      deleteRoom,
+        allRooms3,
     // createRoomReview,
     // checkReviewAvailability,
     // allAdminRooms,

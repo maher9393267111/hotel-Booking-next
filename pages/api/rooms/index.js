@@ -1,14 +1,14 @@
 import nc from 'next-connect'
 import dbConnect from '../../../config/dbConnect'
+import onError from '../../../middlewares/errors'
+import {  newRoom,allRooms,allRooms3 } from '../../../controllers/roomControllers'
 
-import {  newRoom,allRooms } from '../../../controllers/roomControllers'
+const handler = nc({ onError });
 
-//const handler = nc({ onError });
-const handler = nc()
 
 dbConnect();
 
-handler.get(allRooms)
+handler.get(allRooms3)
 
 handler
    // .use(isAuthenticatedUser, authorizeRoles('admin'))
